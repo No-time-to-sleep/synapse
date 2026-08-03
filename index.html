@@ -13,19 +13,19 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#05070c;--fg:#dde4f0;--dim:#54657e;--acc1:#6366f1;--acc2:#06b6d4;--card:#0a0e18cc;--border:#ffffff08}
 html{scroll-behavior:smooth}
-body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-size:17px;font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:#6366f133;color:#fff}
 canvas#bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 5%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
 nav.scrolled{background:#05070ce8;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:.8rem 5%;border-bottom:1px solid var(--border)}
-.logo{font-family:'Fira Code',monospace;font-size:.78rem;color:var(--acc2);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:.4rem}
+.logo{font-family:'Fira Code',monospace;font-size:.85rem;color:var(--acc2);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:.4rem}
 .logo .blink{animation:blink 1s step-end infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .nav-links{display:flex;gap:1.6rem;list-style:none}
-.nav-links button{font-family:'Fira Code',monospace;font-size:.62rem;color:var(--dim);background:none;border:none;cursor:pointer;transition:color .3s;letter-spacing:.04em}
+.nav-links button{font-family:'Fira Code',monospace;font-size:.7rem;color:var(--dim);background:none;border:none;cursor:pointer;transition:color .3s;letter-spacing:.04em}
 .nav-links button:hover{color:var(--acc2)}
 section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:5rem 5%}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:2rem}
-.cmd-line{display:flex;align-items:center;gap:.5rem;background:var(--card);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;max-width:580px;margin-bottom:2rem;font-family:'Fira Code',monospace;font-size:.78rem;transition:all .3s}
+.cmd-line{display:flex;align-items:center;gap:.5rem;background:var(--card);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:8px;padding:.85rem 1.1rem;max-width:580px;margin-bottom:2rem;font-family:'Fira Code',monospace;font-size:.9rem;transition:all .3s}
 .cmd-line:focus-within{border-color:#6366f166;box-shadow:0 0 40px #6366f112}
 .cmd-prompt{color:var(--acc2);user-select:none}
 .cmd-input{background:none;border:none;outline:none;color:var(--fg);font-family:inherit;font-size:inherit;width:100%;caret-color:var(--acc1)}
@@ -34,19 +34,19 @@ section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:5rem 
 .cmd-line:focus-within .cmd-suggest,.cmd-suggest.show{display:block}
 .cmd-suggest span{display:block;padding:.4rem .8rem;font-size:.65rem;color:var(--dim);cursor:pointer;transition:all .15s}
 .cmd-suggest span:hover,.cmd-suggest span.sel{background:#6366f122;color:var(--fg)}
-.hero h1{font-size:clamp(2.4rem,5vw,3.4rem);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.6rem,6vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:1rem}
 .hero h1 .gr{background:linear-gradient(135deg,var(--acc1),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:.9rem;color:var(--dim);max-width:480px;line-height:1.7;margin-bottom:2rem}
+.hero p{font-size:1rem;color:var(--dim);max-width:520px;line-height:1.7;margin-bottom:2rem}
 .hero-btns{display:flex;gap:.6rem;flex-wrap:wrap}
-.btn{display:inline-block;padding:.65rem 1.4rem;font-family:'Fira Code',monospace;font-size:.62rem;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;transition:all .3s;text-decoration:none;border:none;color:inherit}
+.btn{display:inline-block;padding:.7rem 1.6rem;font-family:'Fira Code',monospace;font-size:.7rem;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;transition:all .3s;text-decoration:none;border:none;color:inherit}
 .btn-p{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px #6366f122}
 .btn-o{border:1px solid #ffffff0c;color:var(--dim);background:transparent}.btn-o:hover{border-color:#6366f133;color:var(--fg)}
 
-.s-label{font-family:'Fira Code',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acc2);margin-bottom:.5rem;display:block}
-.s-title{font-size:clamp(1.3rem,2vw,1.6rem);font-weight:700;letter-spacing:-.01em;margin-bottom:1.8rem}
+.s-label{font-family:'Fira Code',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acc2);margin-bottom:.5rem;display:block}
+.s-title{font-size:clamp(1.5rem,2.5vw,1.9rem);font-weight:700;letter-spacing:-.01em;margin-bottom:1.8rem}
 
 .tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
-.tab{font-family:'Fira Code',monospace;font-size:.6rem;color:var(--dim);background:transparent;border:1px solid #ffffff08;padding:.45rem 1rem;border-radius:5px;cursor:pointer;transition:all .25s;letter-spacing:.04em}
+.tab{font-family:'Fira Code',monospace;font-size:.7rem;color:var(--dim);background:transparent;border:1px solid #ffffff08;padding:.5rem 1.1rem;border-radius:5px;cursor:pointer;transition:all .25s;letter-spacing:.04em}
 .tab:hover{border-color:#ffffff14;color:var(--fg)}
 .tab.active{background:var(--acc1);color:#fff;border-color:var(--acc1)}
 .tab .cnt{font-size:.5rem;opacity:.6;margin-left:.3rem}
@@ -56,22 +56,22 @@ section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:5rem 
 .pcard:hover{border-color:#ffffff14;transform:translateY(-3px);box-shadow:0 16px 48px #00000033}
 .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--acc1),var(--acc2));opacity:0;transition:opacity .4s}
 .pcard:hover::before{opacity:1}
-.pcard .plang{position:absolute;top:.8rem;right:.8rem;font-family:'Fira Code',monospace;font-size:.5rem;color:var(--dim);letter-spacing:.06em}
-.pcard h3{font-size:.85rem;font-weight:600;margin-bottom:.25rem}
-.pcard p{font-size:.66rem;color:var(--dim);line-height:1.55}
-.pcard .ptag{font-family:'Fira Code',monospace;font-size:.5rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+.pcard .plang{position:absolute;top:.8rem;right:.8rem;font-family:'Fira Code',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.06em}
+.pcard h3{font-size:.95rem;font-weight:600;margin-bottom:.3rem}
+.pcard p{font-size:.76rem;color:var(--dim);line-height:1.55}
+.pcard .ptag{font-family:'Fira Code',monospace;font-size:.58rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
 
 .term-window{max-width:640px;margin:2rem auto 0}
 .term-head{display:flex;align-items:center;gap:.4rem;padding:.5rem .8rem;background:#0d1117;border:1px solid #ffffff0a;border-radius:8px 8px 0 0;border-bottom:none}
 .term-dot{width:9px;height:9px;border-radius:50%}.r{background:#ef4444}.y{background:#eab308}.g{background:#22c55e}
-.term-title{font-family:'Fira Code',monospace;font-size:.55rem;color:#4b5563;margin-left:.3rem}
-.term-body{background:#060912;border:1px solid #ffffff0a;border-radius:0 0 8px 8px;padding:1.2rem;font-family:'Fira Code',monospace;font-size:.7rem;line-height:1.9;color:#94a3b8;overflow-x:auto}
+.term-title{font-family:'Fira Code',monospace;font-size:.62rem;color:#4b5563;margin-left:.3rem}
+.term-body{background:#060912;border:1px solid #ffffff0a;border-radius:0 0 8px 8px;padding:1.3rem;font-family:'Fira Code',monospace;font-size:.78rem;line-height:1.9;color:#94a3b8;overflow-x:auto}
 .term-body .tp{color:var(--acc2)}.term-body .tc{color:#e2e8f0}.term-body .to{color:var(--dim)}.term-body .th{color:var(--acc1)}
 
 .contact-card{background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center;max-width:480px;margin:0 auto}
-.contact-card h2{font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
-.contact-card p{color:var(--dim);font-size:.75rem;margin-bottom:1.5rem}
-.contact-card a{color:var(--acc2);text-decoration:none;font-family:'Fira Code',monospace;font-size:.65rem;transition:color .3s;display:inline-block;margin:.3rem .8rem}
+.contact-card h2{font-size:1.4rem;font-weight:700;margin-bottom:.5rem}
+.contact-card p{color:var(--dim);font-size:.85rem;line-height:1.7;margin-bottom:1.5rem}
+.contact-card a{color:var(--acc2);text-decoration:none;font-family:'Fira Code',monospace;font-size:.75rem;transition:color .3s;display:inline-block;margin:.3rem .8rem}
 .contact-card a:hover{color:var(--acc1)}
 
 footer{padding:2rem 5%;text-align:center;font-family:'Fira Code',monospace;font-size:.58rem;color:#1e293b}
@@ -118,12 +118,11 @@ footer{padding:2rem 5%;text-align:center;font-family:'Fira Code',monospace;font-
   <span class="s-label">~/work</span>
   <h2 class="s-title">Projects by category.</h2>
   <div class="tabs">
-    <button class="tab active" onclick="filterProjects('all',this)">All<span class="cnt">25</span></button>
+    <button class="tab active" onclick="filterProjects('all',this)">All<span class="cnt">18</span></button>
     <button class="tab" onclick="filterProjects('web',this)">Websites<span class="cnt">5</span></button>
     <button class="tab" onclick="filterProjects('devops',this)">DevOps<span class="cnt">3</span></button>
     <button class="tab" onclick="filterProjects('hardware',this)">Hardware<span class="cnt">9</span></button>
     <button class="tab" onclick="filterProjects('tools',this)">Tools<span class="cnt">1</span></button>
-    <button class="tab" onclick="filterProjects('games',this)">Games<span class="cnt">7</span></button>
   </div>
   <div class="projects" id="projectGrid"></div>
 </section>
@@ -202,14 +201,7 @@ footer{padding:2rem 5%;text-align:center;font-family:'Fira Code',monospace;font-
     {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer Pager',desc:'Two-device paging system using ESP-NOW protocol.',link:'https://github.com/catcore-dev/arduino-sketches'},
     {cat:'hardware',lang:'C++/Arduino',title:'Smart Home Sensor',desc:'DHT22, PIR sensor, relay. LCD 16x2 with button menu.',link:'https://github.com/catcore-dev/arduino-sketches'},
     {cat:'hardware',lang:'C++/Arduino',title:'TFT SD Reader',desc:'Reads text from SD card and displays it on TFT screen.',link:'https://github.com/catcore-dev/arduino-sketches'},
-    {cat:'tools',lang:'Python',title:'PC Power Check',desc:'Cross-platform benchmark. CPU, memory, disk. Zero dependencies.',link:'https://github.com/catcore-dev/pc-bench'},
-    {cat:'games',lang:'GDScript',title:'Bus 322 Runner',desc:'Godot 4 arcade runner. 14,223 lines of gameplay script.',link:'https://github.com/catcore-dev'},
-    {cat:'games',lang:'GDScript',title:'Bus Babka Novel',desc:'Visual novel set in a bus. 3,668 lines of dialogue and logic.',link:'https://github.com/catcore-dev'},
-    {cat:'games',lang:'GDScript',title:'Sonic Escape',desc:'3-stage Sonic platformer. 52,261 lines of parkour scripting.',link:'https://github.com/catcore-dev'},
-    {cat:'games',lang:'GDScript',title:'Scooter Race',desc:'Racing game with 14,062 lines. Procedural track generation.',link:'https://github.com/catcore-dev'},
-    {cat:'games',lang:'GDScript',title:'Cat Bydlo Battle',desc:'RPG battle system with 6,692 lines of combat logic.',link:'https://github.com/catcore-dev'},
-    {cat:'games',lang:'GDScript',title:'Doom Babka Boss',desc:'Boss fight in Doom style. 8,813 lines of enemy AI and arena logic.',link:'https://github.com/catcore-dev'},
-    {cat:'games',lang:'GDScript',title:'Queue CS2 Shooter',desc:'CS2-style queue shooter. 18,348 lines of shooting mechanics.',link:'https://github.com/catcore-dev'},
+    {cat:'tools',lang:'Python',title:'PC Power Check',desc:'Cross-platform benchmark. CPU, memory, disk. Zero dependencies.',link:'https://github.com/catcore-dev/pc-bench'}
   ];
 
   var grid=document.getElementById('projectGrid');
@@ -229,8 +221,8 @@ footer{padding:2rem 5%;text-align:center;font-family:'Fira Code',monospace;font-
   };
   window.scrollToSection=function(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})};
   var inp=document.getElementById('cmd'),sug=document.getElementById('suggest');
-  var cmds=['help','projects','about','contact','websites','devops','hardware','tools','games','terminal','whoami','github','tg','clear'];
-  var cmdData={help:'projects | about | contact | websites | devops | hardware | tools | games | terminal | whoami | github | tg | clear',
+  var cmds=['help','projects','about','contact','websites','devops','hardware','tools','terminal','whoami','github','tg','clear'];
+  var cmdData={help:'projects | about | contact | websites | devops | hardware | tools | terminal | whoami | github | tg | clear',
     whoami:'Daniil Alekseev — web developer, systems engineer, hardware hacker. Based in Russia, working remotely.',
     about:'I build static websites, configure Linux servers, and program embedded hardware. Docker, Nginx, Debian, Arduino, M5Stack.',
     github:'github.com/catcore-dev — all my code lives here.',
@@ -250,8 +242,7 @@ footer{padding:2rem 5%;text-align:center;font-family:'Fira Code',monospace;font-
     else if(v==='websites'){scrollToSection('projects');filterProjects('web',document.querySelectorAll('.tab')[1])}
     else if(v==='devops'){scrollToSection('projects');filterProjects('devops',document.querySelectorAll('.tab')[2])}
     else if(v==='hardware'){scrollToSection('projects');filterProjects('hardware',document.querySelectorAll('.tab')[3])}
-    else if(v==='tools'){scrollToSection('projects');filterProjects('tools',document.querySelectorAll('.tab')[4])}
-    else if(v==='games'){scrollToSection('projects');filterProjects('games',document.querySelectorAll('.tab')[5])}
+      else if(v==='tools'){scrollToSection('projects');filterProjects('tools',document.querySelectorAll('.tab')[4])}
     else if(v==='about'||v==='contact'){scrollToSection('contact')}
     else if(v==='terminal'){scrollToSection('term')}
     else if(v==='github'||v==='gh'){window.open('https://github.com/catcore-dev','_blank')}
