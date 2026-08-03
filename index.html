@@ -176,9 +176,8 @@ footer{padding:2rem 5%;text-align:center;color:#1e293b;font-size:.62rem;font-fam
     <h2 class="s-title" style="margin-bottom:.5rem">Let's build something.</h2>
     <p>I take on a few projects per month. If you need a fast website, a configured server, or a Raspberry Pi project — write to me.</p>
     <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1rem">
-      <a href="mailto:hi@daniil.dev">mailto:hi@daniil.dev</a>
-      <a href="https://github.com/catcore-dev" target="_blank">github/catcore-dev</a>
-      <a href="https://t.me/">t.me/</a>
+      <a href="https://github.com/catcore-dev" target="_blank">github.com/catcore-dev</a>
+      <a href="https://t.me/" target="_blank">Telegram</a>
     </div>
   </div>
 </section>
@@ -210,7 +209,7 @@ footer{padding:2rem 5%;text-align:center;color:#1e293b;font-size:.62rem;font-fam
     if(e.key==='Enter'){var v=this.value.trim().toLowerCase();
       var routes={projects:'projects',work:'projects',services:'services',stack:'stack',contact:'contact',about:'stack',help:'',clear:'',cls:'',home:'',whoami:''};
       if(routes[v]!==undefined){this.value='';if(routes[v])document.getElementById(routes[v]).scrollIntoView({behavior:'smooth'})}
-      else if(v==='email'||v==='mail'){window.location.href='mailto:hi@daniil.dev'}
+      else if(v==='email'||v==='mail'){this.value='github/catcore-dev';setTimeout(function(){inp.value=''},2000)}
       else if(v==='github'||v==='gh'){window.open('https://github.com/catcore-dev','_blank')}
       else if(v){this.value='command not found: '+v;setTimeout(function(){inp.value=''},1500)}
     }
