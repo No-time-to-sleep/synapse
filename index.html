@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Daniil Alekseev — Web Developer &amp; Systems Engineer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:#080b12;color:#dde4f0;-webkit-font-smoothing:antialiased}
+.cursor-glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,#6366f108 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:opacity .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 6%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:#080b12e8;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:.9rem 6%;border-bottom:1px solid #ffffff08}
+.logo{font-weight:700;font-size:.95rem;letter-spacing:.08em;color:#dde4f0;text-decoration:none}
+.logo span{background:linear-gradient(135deg,#6366f1,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:#64748b;text-decoration:none;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:#dde4f0}
+
+section{max-width:1100px;margin:0 auto;padding:5rem 6%}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:5rem;position:relative;z-index:1}
+.hero-eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:#6366f1;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.5rem,5.5vw,4.2rem);font-weight:700;line-height:1.06;margin-bottom:1.5rem;letter-spacing:-.02em;color:#f1f5f9}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#6366f1,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.05rem;color:#64748b;max-width:500px;line-height:1.7;margin-bottom:2.5rem}
+.btn-row{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.8rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;cursor:pointer;transition:all .3s;text-decoration:none;font-family:inherit;border:none}
+.btn-primary{background:linear-gradient(135deg,#6366f1,#06b6d4);color:#fff}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px #6366f144}
+.btn-ghost{border:1px solid #ffffff0f;color:#94a3b8;background:transparent}.btn-ghost:hover{border-color:#6366f144;color:#dde4f0}
+
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;border-top:1px solid #ffffff06}
+.hs-val{font-size:2rem;font-weight:700;color:#f1f5f9;line-height:1}.hs-lbl{font-size:.62rem;color:#64748b;letter-spacing:.12em;text-transform:uppercase;margin-top:.4rem}
+
+.s-label{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#6366f1;margin-bottom:.8rem;display:block}
+.s-title{font-size:clamp(1.6rem,2.5vw,2rem);font-weight:700;margin-bottom:2.5rem;color:#f1f5f9;line-height:1.15}
+
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.project-card{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;background:#0c1019;border:1px solid #ffffff06;transition:all .4s;text-decoration:none;color:inherit;display:block}
+.project-card:hover{border-color:#6366f133;transform:translateY(-3px);box-shadow:0 16px 48px #00000044}
+.project-card .p-img{height:200px;background-size:cover;background-position:center;position:relative}
+.project-card .p-img::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 60%,#0c1019)}
+.p-img-1{background:linear-gradient(135deg,#1e1b4b 0%,#0c1019 50%,#1a1040 100%)}
+.p-img-2{background:linear-gradient(200deg,#0f172a 0%,#0c1019 50%,#1a0f2e 100%)}
+.p-img-3{background:linear-gradient(160deg,#1a1040 0%,#0c1019 50%,#0f1a2e 100%)}
+.p-img-4{background:linear-gradient(250deg,#0f1f2e 0%,#0c1019 50%,#1a1a2e 100%)}
+.p-img-1::before{content:'';position:absolute;top:20px;left:20px;right:20px;bottom:20px;border:1px solid #6366f115;border-radius:2px}
+.p-img-2::before{content:'';position:absolute;top:25%;left:15%;right:25%;bottom:20%;border:1px solid #06b6d410;border-radius:50%}
+.p-img-3::before{content:'';position:absolute;inset:15% 25%;border:1px solid #6366f112;transform:skew(-3deg)}
+.p-img-4::before{content:'';position:absolute;top:15px;left:30px;right:30px;bottom:25px;border:1px solid #06b6d40d}
+.project-card .p-body{padding:1.5rem 2rem 2rem}
+.project-card .p-tag{font-size:.58rem;color:#6366f1;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.project-card h3{font-size:1.05rem;font-weight:600;color:#f1f5f9;margin-bottom:.3rem}
+.project-card .p-body p{font-size:.75rem;color:#64748b;line-height:1.6}
+
+.skills-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.skill-tag{padding:.5rem 1rem;border:1px solid #ffffff0a;border-radius:20px;font-size:.68rem;color:#94a3b8;transition:all .3s;cursor:default;background:#0c1019}
+.skill-tag:hover{border-color:#6366f133;color:#dde4f0;background:#111724}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.service-card{background:#0c1019;border:1px solid #ffffff05;padding:2.5rem 2rem;border-radius:10px;transition:all .4s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#06b6d4);opacity:0;transition:opacity .4s}
+.service-card:hover::before{opacity:1}
+.service-card:hover{border-color:#ffffff0c;transform:translateY(-2px)}
+.service-card .s-icon{font-size:1.5rem;margin-bottom:1.2rem}
+.service-card h3{font-size:.95rem;font-weight:600;margin-bottom:.5rem;color:#f1f5f9}
+.service-card p{font-size:.75rem;color:#64748b;line-height:1.7}
+
+.contact-block{background:#0c1019;border:1px solid #ffffff06;border-radius:12px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.contact-block::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,#6366f106 0%,transparent 60%);pointer-events:none}
+.contact-block h2{font-size:1.8rem;font-weight:700;margin-bottom:1rem;color:#f1f5f9;position:relative}
+.contact-block p{color:#64748b;max-width:400px;margin:0 auto 2rem;font-size:.85rem;line-height:1.7;position:relative}
+.contact-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;position:relative}
+.contact-links a{color:#6366f1;text-decoration:none;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.contact-links a:hover{color:#06b6d4}
+
+footer{padding:3rem 6%;text-align:center;color:#334155;font-size:.65rem;border-top:1px solid #ffffff04}
+
+.reveal{opacity:0;transform:translateY(35px);transition:all .9s cubic-bezier(.22,1,.36,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+
+.orb{position:fixed;border-radius:50%;border:1px solid #ffffff04;pointer-events:none;z-index:0}
+.orb-1{width:400px;height:400px;top:10%;right:-15%;animation:float1 20s ease-in-out infinite}
+.orb-2{width:300px;height:300px;bottom:20%;left:-10%;border-color:#6366f108;animation:float2 25s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}25%{transform:translate(-30px,20px)}50%{transform:translate(10px,-30px)}75%{transform:translate(20px,15px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-10px)}66%{transform:translate(-20px,20px)}}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  nav{padding:1rem 1.5rem}
+  section{padding:4rem 1.5rem}
+  .hero{padding-top:6rem}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap}
+  .projects-grid,.services-grid{grid-template-columns:1fr}
+  .contact-block{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="cursor-glow" id="cursor"></div>
+<div class="orb orb-1"></div><div class="orb orb-2"></div>
+
+<nav id="nav">
+  <a href="#" class="logo">dan<span>iil</span></a>
+  <ul class="nav-links"><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#about">Stack</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav>
+
+<main>
+
+<section class="hero" id="home">
+  <span class="hero-eyebrow">Web Developer &amp; Systems Engineer</span>
+  <h1>I build <em>fast websites</em> and the infrastructure they run on.</h1>
+  <p>Static sites, Docker deployments, server configuration, and embedded hardware. One person, the full stack — from HTML to the OS kernel. Debian native. Based in Babkinsk, working remotely.</p>
+  <div class="btn-row">
+    <a href="#work" class="btn btn-primary">View projects</a>
+    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="hs-val">20+</div><div class="hs-lbl">Projects shipped</div></div>
+    <div><div class="hs-val">4</div><div class="hs-lbl">Years of Linux</div></div>
+    <div><div class="hs-val">3</div><div class="hs-lbl">Languages</div></div>
+    <div><div class="hs-val">RPi 5</div><div class="hs-lbl">Home server</div></div>
+  </div>
+</section>
+
+<section id="work">
+  <span class="s-label">Recent work</span>
+  <h2 class="s-title">Projects I'm proud of.</h2>
+  <div class="projects-grid">
+    <a href="https://no-time-to-sleep.github.io/cartel/" target="_blank" class="project-card reveal delay-1">
+      <div class="p-img p-img-1"></div>
+      <div class="p-body"><div class="p-tag">Architecture</div><h3>Cartel Bureau</h3><p>Premium brand site for a Swiss architecture firm. Dark theme, modal project cards, animated counters.</p></div>
+    </a>
+    <a href="https://no-time-to-sleep.github.io/polaris/" target="_blank" class="project-card reveal delay-2">
+      <div class="p-img p-img-2"></div>
+      <div class="p-body"><div class="p-tag">Corporate</div><h3>Polaris Satellite Comms</h3><p>Multi-page interactive site. Tab switching, coverage map, pricing calculator. Zero alert(), all smooth reveals.</p></div>
+    </a>
+    <a href="https://no-time-to-sleep.github.io/ninakovacs/" target="_blank" class="project-card reveal delay-1">
+      <div class="p-img p-img-3"></div>
+      <div class="p-body"><div class="p-tag">Photography</div><h3>Nina Kovacs Portfolio</h3><p>Editorial photographer's brand. Lightbox gallery, client marquee, warm editorial aesthetic.</p></div>
+    </a>
+    <a href="https://github.com/catcore-dev/deploy-stack" target="_blank" class="project-card reveal delay-2">
+      <div class="p-img p-img-4"></div>
+      <div class="p-body"><div class="p-tag">DevOps</div><h3>Deploy Stack</h3><p>Production Docker Compose for Nextcloud + MariaDB + Redis. Backups, security, healthchecks.</p></div>
+    </a>
+  </div>
+</section>
+
+<section id="services">
+  <span class="s-label">What I do</span>
+  <h2 class="s-title">Services.</h2>
+  <div class="services-grid reveal">
+    <div class="service-card"><div class="s-icon">&#9678;</div><h3>Static Websites</h3><p>Landing pages, single-page sites, and small multi-page projects. Pure HTML/CSS/JS, fast delivery, GitHub Pages deployment included.</p></div>
+    <div class="service-card"><div class="s-icon">&#9776;</div><h3>Server Setup</h3><p>VPS configuration from scratch. Docker, Nginx, SSL, UFW, Fail2ban, automatic backups. Everything you need to sleep at night.</p></div>
+    <div class="service-card"><div class="s-icon">&#9672;</div><h3>Raspberry Pi</h3><p>Home servers, NAS, VPN gateways, IoT controllers. Custom systemd services, remote access, monitoring. I run a Pi 5 at home — I know the hardware.</p></div>
+  </div>
+</section>
+
+<section id="about">
+  <span class="s-label">Stack</span>
+  <h2 class="s-title">What I work with.</h2>
+  <div class="skills-row reveal">
+    <span class="skill-tag">HTML/CSS/JS</span><span class="skill-tag">Docker</span><span class="skill-tag">Docker Compose</span>
+    <span class="skill-tag">Nginx</span><span class="skill-tag">MariaDB</span><span class="skill-tag">Redis</span>
+    <span class="skill-tag">Debian/Ubuntu</span><span class="skill-tag">systemd</span><span class="skill-tag">UFW</span>
+    <span class="skill-tag">Fail2ban</span><span class="skill-tag">Cloudflare Tunnel</span><span class="skill-tag">WireGuard</span>
+    <span class="skill-tag">Python</span><span class="skill-tag">C++/Arduino</span><span class="skill-tag">M5Stack</span>
+    <span class="skill-tag">ESP32</span><span class="skill-tag">Raspberry Pi</span><span class="skill-tag">Git</span>
+    <span class="skill-tag">GitHub Pages</span><span class="skill-tag">Nextcloud</span>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-block reveal">
+    <h2>Let's work together.</h2>
+    <p>I take on a few projects per month. If you need a website, server setup, or help with your Raspberry Pi — reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:hi@daniil.dev">Email</a>
+      <a href="https://github.com/catcore-dev" target="_blank">GitHub</a>
+      <a href="https://t.me/">Telegram</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>&copy; 2026 Daniil Alekseev. Built on Debian. Hosted on GitHub Pages.</footer>
+
+<script>
+(function(){
+  var n=document.getElementById('nav');if(n)window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60)});
+  if(window.IntersectionObserver){var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.15});document.querySelectorAll('.reveal').forEach(function(x){o.observe(x)})}
+  var c=document.getElementById('cursor');var active=false;
+  document.addEventListener('mousemove',function(e){if(c){c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';if(!active){c.style.opacity='1';active=true}clearTimeout(c._t);c._t=setTimeout(function(){c.style.opacity='0';active=false},3000)}});
+})();
+</script>
+</body>
+</html>
