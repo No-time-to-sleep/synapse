@@ -3,217 +3,260 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Daniil Alekseev — Developer &amp; Systems Engineer</title>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#06080d;--fg:#e2e8f0;--dim:#64748b;--accent1:#6366f1;--accent2:#06b6d4;--glass:rgba(12,16,28,.72)}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-::selection{background:#6366f144;color:#fff}
-
-canvas#bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 5%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
-nav.scrolled{background:#06080de8;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.85rem 5%;border-bottom:1px solid #ffffff06}
-.logo{font-family:'Fira Code','JetBrains Mono',monospace;font-size:.82rem;color:var(--accent2);text-decoration:none;letter-spacing:-.02em}
-.logo .caret{animation:blink 1s step-end infinite;opacity:1}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.nav-links{display:flex;gap:1.8rem;list-style:none}
-.nav-links a{font-family:'Fira Code',monospace;font-size:.68rem;color:var(--dim);text-decoration:none;transition:color .3s;letter-spacing:.04em}
-.nav-links a:hover{color:var(--accent2)}
-
-section{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:5rem 5%}
-
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:2rem}
-.cmd-line{display:flex;align-items:center;gap:.6rem;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid #ffffff0c;border-radius:8px;padding:.8rem 1.2rem;max-width:620px;margin-bottom:2.5rem;font-family:'Fira Code',monospace;font-size:.82rem;transition:all .3s}
-.cmd-line:focus-within{border-color:var(--accent1)66;box-shadow:0 0 32px #6366f11a}
-.cmd-prompt{color:var(--accent2);white-space:nowrap;user-select:none}
-.cmd-input{background:none;border:none;outline:none;color:var(--fg);font-family:inherit;font-size:inherit;width:100%;caret-color:var(--accent1)}
-.cmd-input::placeholder{color:#334155}
-.cmd-hints{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.6rem;opacity:0;transition:opacity .3s}
-.cmd-line:focus-within .cmd-hints{opacity:1}
-.cmd-hint{font-size:.62rem;color:#334155;cursor:pointer;transition:color .2s;padding:.2rem .5rem;border-radius:3px;border:1px solid transparent;font-family:'Fira Code',monospace}
-.cmd-hint:hover{color:var(--accent2);border-color:#ffffff0c}
-.cmd-hint kbd{font-weight:600;color:var(--accent1)}
-
-.hero h1{font-size:clamp(2.5rem,5vw,3.8rem);font-weight:700;line-height:1.06;letter-spacing:-.02em;margin-bottom:1.2rem}
-.hero h1 .hl{background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:.95rem;color:var(--dim);max-width:500px;line-height:1.7;margin-bottom:2.5rem}
-.btn-row{display:flex;gap:.8rem;flex-wrap:wrap}
-.btn{display:inline-block;padding:.7rem 1.6rem;font-family:'Fira Code',monospace;font-size:.65rem;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;transition:all .3s;text-decoration:none;border:none;color:inherit}
-.btn-accent{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff}.btn-accent:hover{transform:translateY(-2px);box-shadow:0 8px 32px #6366f133}
-.btn-outline{border:1px solid #ffffff10;color:var(--dim);background:transparent}.btn-outline:hover{border-color:var(--accent1)44;color:var(--fg)}
-
-.s-label{font-family:'Fira Code',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:.6rem;display:block}
-.s-title{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:600;margin-bottom:2rem;line-height:1.15;letter-spacing:-.01em}
-
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.card{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid #ffffff08;border-radius:10px;padding:2rem;transition:all .35s;position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block;cursor:pointer}
-.card:hover{border-color:#ffffff14;transform:translateY(-2px);box-shadow:0 12px 40px #00000033}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--accent1),var(--accent2));opacity:0;transition:opacity .4s}
-.card:hover::before{opacity:1}
-.card-tag{font-family:'Fira Code',monospace;font-size:.55rem;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
-.card h3{font-size:1rem;font-weight:600;margin-bottom:.4rem;color:var(--fg)}
-.card p{font-size:.72rem;color:var(--dim);line-height:1.6}
-
-.terminal{position:relative;max-width:620px;margin:2rem auto 0}
-.term-header{display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;background:#0d1117;border:1px solid #ffffff0a;border-radius:8px 8px 0 0;border-bottom:none}
-.term-dot{width:10px;height:10px;border-radius:50%}.term-dot.r{background:#ef4444}.term-dot.y{background:#eab308}.term-dot.g{background:#22c55e}
-.term-title{font-family:'Fira Code',monospace;font-size:.6rem;color:#64748b;margin-left:.4rem}
-.term-body{background:#080b12;border:1px solid #ffffff0a;border-radius:0 0 8px 8px;padding:1.5rem;font-family:'Fira Code','JetBrains Mono',monospace;font-size:.75rem;line-height:1.8;color:#94a3b8;overflow-x:auto}
-.term-body .t-prompt{color:var(--accent2)}.term-body .t-cmd{color:#f1f5f9}.term-body .t-out{color:#64748b}.term-body .t-high{color:var(--accent1)}
-
-.tags-row{display:flex;flex-wrap:wrap;gap:.5rem}
-.tag{font-family:'Fira Code',monospace;font-size:.62rem;padding:.35rem .8rem;border:1px solid #ffffff0a;border-radius:4px;color:var(--dim);transition:all .25s;background:#0c1019;cursor:default}
-.tag:hover{border-color:var(--accent1)44;color:var(--fg)}
-
-.footer-glass{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid #ffffff06;border-radius:12px;padding:2.5rem;text-align:center;margin-top:2rem}
-.footer-glass p{color:var(--dim);font-size:.75rem;margin-bottom:.8rem}
-.footer-glass a{color:var(--accent2);text-decoration:none;font-family:'Fira Code',monospace;font-size:.68rem;transition:color .3s}
-.footer-glass a:hover{color:var(--accent1)}
-
-footer{padding:2rem 5%;text-align:center;color:#1e293b;font-size:.62rem;font-family:'Fira Code',monospace}
-
-.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}
-.reveal.on{opacity:1;transform:translateY(0)}
-.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
-
-@media(max-width:768px){
-  .grid2,.grid3{grid-template-columns:1fr}
-  .nav-links{display:none}
-  nav{padding:.9rem 1.2rem}
-  section{padding:3rem 1.2rem}
-  .hero{padding-top:5rem}
-  .cmd-line{font-size:.72rem}
-  .term-body{font-size:.65rem;padding:1rem}
-}
-</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#05070c;--fg:#dde4f0;--dim:#54657e;--acc1:#6366f1;--acc2:#06b6d4;--card:#0a0e18cc;--border:#ffffff08}
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:#6366f133;color:#fff}
+canvas#bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 5%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:#05070ce8;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:.8rem 5%;border-bottom:1px solid var(--border)}
+.logo{font-family:'Fira Code',monospace;font-size:.78rem;color:var(--acc2);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:.4rem}
+.logo .blink{animation:blink 1s step-end infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links button{font-family:'Fira Code',monospace;font-size:.62rem;color:var(--dim);background:none;border:none;cursor:pointer;transition:color .3s;letter-spacing:.04em}
+.nav-links button:hover{color:var(--acc2)}
+section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:5rem 5%}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:2rem}
+.cmd-line{display:flex;align-items:center;gap:.5rem;background:var(--card);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;max-width:580px;margin-bottom:2rem;font-family:'Fira Code',monospace;font-size:.78rem;transition:all .3s}
+.cmd-line:focus-within{border-color:#6366f166;box-shadow:0 0 40px #6366f112}
+.cmd-prompt{color:var(--acc2);user-select:none}
+.cmd-input{background:none;border:none;outline:none;color:var(--fg);font-family:inherit;font-size:inherit;width:100%;caret-color:var(--acc1)}
+.cmd-input::placeholder{color:#1e293b}
+.cmd-suggest{position:absolute;top:100%;left:0;right:0;background:#0c101e;border:1px solid #ffffff0a;border-radius:6px;margin-top:6px;display:none;overflow:hidden;z-index:50}
+.cmd-line:focus-within .cmd-suggest,.cmd-suggest.show{display:block}
+.cmd-suggest span{display:block;padding:.4rem .8rem;font-size:.65rem;color:var(--dim);cursor:pointer;transition:all .15s}
+.cmd-suggest span:hover,.cmd-suggest span.sel{background:#6366f122;color:var(--fg)}
+.hero h1{font-size:clamp(2.4rem,5vw,3.4rem);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:1rem}
+.hero h1 .gr{background:linear-gradient(135deg,var(--acc1),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:.9rem;color:var(--dim);max-width:480px;line-height:1.7;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.65rem 1.4rem;font-family:'Fira Code',monospace;font-size:.62rem;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;transition:all .3s;text-decoration:none;border:none;color:inherit}
+.btn-p{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px #6366f122}
+.btn-o{border:1px solid #ffffff0c;color:var(--dim);background:transparent}.btn-o:hover{border-color:#6366f133;color:var(--fg)}
+
+.s-label{font-family:'Fira Code',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acc2);margin-bottom:.5rem;display:block}
+.s-title{font-size:clamp(1.3rem,2vw,1.6rem);font-weight:700;letter-spacing:-.01em;margin-bottom:1.8rem}
+
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
+.tab{font-family:'Fira Code',monospace;font-size:.6rem;color:var(--dim);background:transparent;border:1px solid #ffffff08;padding:.45rem 1rem;border-radius:5px;cursor:pointer;transition:all .25s;letter-spacing:.04em}
+.tab:hover{border-color:#ffffff14;color:var(--fg)}
+.tab.active{background:var(--acc1);color:#fff;border-color:var(--acc1)}
+.tab .cnt{font-size:.5rem;opacity:.6;margin-left:.3rem}
+
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.pcard{background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:all .35s;text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden}
+.pcard:hover{border-color:#ffffff14;transform:translateY(-3px);box-shadow:0 16px 48px #00000033}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--acc1),var(--acc2));opacity:0;transition:opacity .4s}
+.pcard:hover::before{opacity:1}
+.pcard .plang{position:absolute;top:.8rem;right:.8rem;font-family:'Fira Code',monospace;font-size:.5rem;color:var(--dim);letter-spacing:.06em}
+.pcard h3{font-size:.85rem;font-weight:600;margin-bottom:.25rem}
+.pcard p{font-size:.66rem;color:var(--dim);line-height:1.55}
+.pcard .ptag{font-family:'Fira Code',monospace;font-size:.5rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+
+.term-window{max-width:640px;margin:2rem auto 0}
+.term-head{display:flex;align-items:center;gap:.4rem;padding:.5rem .8rem;background:#0d1117;border:1px solid #ffffff0a;border-radius:8px 8px 0 0;border-bottom:none}
+.term-dot{width:9px;height:9px;border-radius:50%}.r{background:#ef4444}.y{background:#eab308}.g{background:#22c55e}
+.term-title{font-family:'Fira Code',monospace;font-size:.55rem;color:#4b5563;margin-left:.3rem}
+.term-body{background:#060912;border:1px solid #ffffff0a;border-radius:0 0 8px 8px;padding:1.2rem;font-family:'Fira Code',monospace;font-size:.7rem;line-height:1.9;color:#94a3b8;overflow-x:auto}
+.term-body .tp{color:var(--acc2)}.term-body .tc{color:#e2e8f0}.term-body .to{color:var(--dim)}.term-body .th{color:var(--acc1)}
+
+.contact-card{background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center;max-width:480px;margin:0 auto}
+.contact-card h2{font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.contact-card p{color:var(--dim);font-size:.75rem;margin-bottom:1.5rem}
+.contact-card a{color:var(--acc2);text-decoration:none;font-family:'Fira Code',monospace;font-size:.65rem;transition:color .3s;display:inline-block;margin:.3rem .8rem}
+.contact-card a:hover{color:var(--acc1)}
+
+footer{padding:2rem 5%;text-align:center;font-family:'Fira Code',monospace;font-size:.58rem;color:#1e293b}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .projects{grid-template-columns:1fr}
+  nav{padding:.8rem 1.2rem}
+  section{padding:3rem 1.2rem}
+  .hero{padding-top:5rem}
+}
+</style>
 </head>
 <body>
 <canvas id="bg"></canvas>
 
 <nav id="nav">
-  <a href="#" class="logo">daniil@synapse<span class="caret">_</span></a>
+  <a href="#" class="logo">daniil<span class="blink">_</span></a>
   <ul class="nav-links">
-    <li><a href="#projects">/projects</a></li><li><a href="#services">/services</a></li><li><a href="#stack">/stack</a></li><li><a href="#contact">/contact</a></li>
+    <li><button onclick="scrollToSection('projects')">projects</button></li>
+    <li><button onclick="scrollToSection('term')">terminal</button></li>
+    <li><button onclick="scrollToSection('contact')">contact</button></li>
   </ul>
 </nav>
 
 <main>
 
 <section class="hero" id="home">
-  <div class="cmd-line">
+  <div class="cmd-line" style="position:relative">
     <span class="cmd-prompt">~ $</span>
-    <input type="text" class="cmd-input" id="cmdInput" placeholder="type a command..." autocomplete="off" autofocus>
-    <div class="cmd-hints"><span class="cmd-hint"><kbd>help</kbd> list commands</span><span class="cmd-hint"><kbd>projects</kbd> view</span><span class="cmd-hint"><kbd>contact</kbd> reach out</span></div>
+    <input type="text" class="cmd-input" id="cmd" placeholder="type help for commands..." autocomplete="off" autofocus>
+    <div class="cmd-suggest" id="suggest"></div>
   </div>
-  <h1>I build <span class="hl">fast websites</span> and the servers they run on.</h1>
-  <p>Static sites, Docker deployments, Debian administration, embedded hardware. Full stack — from HTML tags to kernel configs. Based in Babkinsk, working worldwide.</p>
-  <div class="btn-row">
-    <a href="#projects" class="btn btn-accent">View projects</a>
-    <a href="#contact" class="btn btn-outline">Get in touch</a>
+  <h1>Full-stack <span class="gr">from HTML to kernel.</span></h1>
+  <p>I build websites, configure servers, and program hardware. One person covering everything from landing pages to Docker deployments to embedded firmware. Debian at home, code in the cloud.</p>
+  <div class="hero-btns">
+    <button class="btn btn-p" onclick="scrollToSection('projects')">View all projects</button>
+    <a href="https://t.me/hogin12" target="_blank" class="btn btn-o">t.me/hogin12</a>
+    <a href="https://github.com/catcore-dev" target="_blank" class="btn btn-o">github/catcore-dev</a>
   </div>
 </section>
 
 <section id="projects">
-  <span class="s-label">~/projects</span>
-  <h2 class="s-title">Recent work.</h2>
-  <div class="grid2">
-    <a href="https://no-time-to-sleep.github.io/cartel/" target="_blank" class="card reveal delay-1"><span class="card-tag">brand site</span><h3>Cartel Architecture Bureau</h3><p>Premium dark-themed site for a Swiss architecture firm. Modal project cards, animated counters, smooth reveals.</p></a>
-    <a href="https://no-time-to-sleep.github.io/polaris/" target="_blank" class="card reveal delay-2"><span class="card-tag">multi-page app</span><h3>Polaris Satellite Comms</h3><p>Interactive multi-section platform with tab switching, coverage map, and custom pricing calculator.</p></a>
-    <a href="https://no-time-to-sleep.github.io/ninakovacs/" target="_blank" class="card reveal delay-3"><span class="card-tag">portfolio</span><h3>Nina Kovacs Photography</h3><p>Editorial photographer brand with lightbox gallery, client marquee, and editorial typography.</p></a>
-    <a href="https://github.com/catcore-dev/deploy-stack" target="_blank" class="card reveal delay-4"><span class="card-tag">devops</span><h3>Deploy Stack</h3><p>Production Docker Compose for Nextcloud + MariaDB + Redis. Automated backups, healthchecks, SSL.</p></a>
+  <span class="s-label">~/work</span>
+  <h2 class="s-title">Projects by category.</h2>
+  <div class="tabs">
+    <button class="tab active" onclick="filterProjects('all',this)">All<span class="cnt">25</span></button>
+    <button class="tab" onclick="filterProjects('web',this)">Websites<span class="cnt">5</span></button>
+    <button class="tab" onclick="filterProjects('devops',this)">DevOps<span class="cnt">3</span></button>
+    <button class="tab" onclick="filterProjects('hardware',this)">Hardware<span class="cnt">9</span></button>
+    <button class="tab" onclick="filterProjects('tools',this)">Tools<span class="cnt">1</span></button>
+    <button class="tab" onclick="filterProjects('games',this)">Games<span class="cnt">7</span></button>
   </div>
-  <div class="terminal reveal">
-    <div class="term-header"><div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div><span class="term-title">daniil@synapse — zsh</span></div>
+  <div class="projects" id="projectGrid"></div>
+</section>
+
+<section id="term">
+  <span class="s-label">~/terminal</span>
+  <h2 class="s-title">Live demo.</h2>
+  <div class="term-window">
+    <div class="term-head"><div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div><span class="term-title">daniil@debian — bash</span></div>
     <div class="term-body">
-      <div><span class="t-prompt">~ $</span> <span class="t-cmd">cat deploy-stack/docker-compose.yml | head -6</span></div>
-      <div><span class="t-out">services:</span></div>
-      <div><span class="t-out">  db:</span></div>
-      <div><span class="t-out">    image: mariadb:11.4</span></div>
-      <div><span class="t-out">  redis:</span></div>
-      <div><span class="t-out">    image: redis:7.2-alpine</span></div>
-      <div style="margin-top:.8rem"><span class="t-prompt">~ $</span> <span class="t-cmd">docker compose ps</span></div>
-      <div><span class="t-out">NAME              STATUS</span></div>
-      <div><span class="t-out">mini-cloud-db-1   <span class="t-high">Up 182d</span> (healthy)</span></div>
-      <div><span class="t-out">mini-cloud-app-1  <span class="t-high">Up 182d</span> (healthy)</span></div>
-      <div><span class="t-out">mini-cloud-redis-1 <span class="t-high">Up 182d</span> (healthy)</span></div>
-      <div style="margin-top:.8rem"><span class="t-prompt">~ $</span> <span class="t-cmd">_</span></div>
+      <div><span class="tp">daniil@debian:~$</span> <span class="tc">uname -a</span></div>
+      <div><span class="to">Linux rpi5 6.6.51+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.6.51-1+rpt3 (2024-10-04) aarch64 GNU/Linux</span></div>
+      <div style="margin-top:.7rem"><span class="tp">daniil@debian:~$</span> <span class="tc">docker compose -f ~/deploy-stack/docker-compose.yml ps</span></div>
+      <div><span class="to">NAME                   STATUS</span></div>
+      <div><span class="to">mini-cloud-db-1        <span class="th">Up 187d</span> (healthy)</span></div>
+      <div><span class="to">mini-cloud-redis-1     <span class="th">Up 187d</span> (healthy)</span></div>
+      <div><span class="to">mini-cloud-app-1       <span class="th">Up 187d</span> (healthy)</span></div>
+      <div><span class="to">mini-cloud-cron-1      <span class="th">Up 187d</span> (healthy)</span></div>
+      <div style="margin-top:.7rem"><span class="tp">daniil@debian:~$</span> <span class="tc">systemctl status local-chat-server</span></div>
+      <div><span class="to">● local-chat-server.service - Production Chat Server</span></div>
+      <div><span class="to">   Active: <span class="th">active (running)</span> since Thu 2025-01-16</span></div>
+      <div><span class="to">   Memory: 98.2M</span></div>
+      <div style="margin-top:.7rem"><span class="tp">daniil@debian:~$</span> <span class="tc">df -h /srv/mini-cloud/data | tail -1</span></div>
+      <div><span class="to">/dev/sda1  457G  189G  245G  44% /srv/mini-cloud/data</span></div>
+      <div style="margin-top:.7rem"><span class="tp">daniil@debian:~$</span> <span class="tc"><span class="blink">_</span></span></div>
     </div>
-  </div>
-</section>
-
-<section id="services">
-  <span class="s-label">~/services</span>
-  <h2 class="s-title">What I do.</h2>
-  <div class="grid3 reveal">
-    <div class="card"><span class="card-tag">/web</span><h3>Static Websites</h3><p>Landing pages, single-page apps, multi-page sites. Pure HTML/CSS/JS. GitHub Pages deployment included. Fast, clean, from scratch.</p></div>
-    <div class="card"><span class="card-tag">/infra</span><h3>Server Setup</h3><p>Docker, Nginx, SSL, MariaDB, Redis. Firewall, Fail2ban, automatic backups. Full VPS configuration for web projects.</p></div>
-    <div class="card"><span class="card-tag">/hardware</span><h3>Raspberry Pi &amp; IoT</h3><p>Home servers, NAS, VPN gateways, sensor networks. Running a Pi 5 and Pi Zero 2W at home. Systemd services, remote access.</p></div>
-  </div>
-</section>
-
-<section id="stack">
-  <span class="s-label">~/stack</span>
-  <h2 class="s-title">Technologies.</h2>
-  <div class="tags-row reveal">
-    <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Docker</span><span class="tag">Docker Compose</span>
-    <span class="tag">Nginx</span><span class="tag">MariaDB</span><span class="tag">Redis</span><span class="tag">Nextcloud</span>
-    <span class="tag">Debian</span><span class="tag">Ubuntu Server</span><span class="tag">systemd</span><span class="tag">UFW</span>
-    <span class="tag">Fail2ban</span><span class="tag">Cloudflare Tunnel</span><span class="tag">WireGuard</span><span class="tag">Tailscale</span>
-    <span class="tag">Python</span><span class="tag">C++</span><span class="tag">Arduino</span><span class="tag">PlatformIO</span>
-    <span class="tag">M5Stack</span><span class="tag">ESP32</span><span class="tag">Raspberry Pi</span><span class="tag">Git</span>
-    <span class="tag">GitHub Pages</span><span class="tag">Bash</span><span class="tag">PowerShell</span>
   </div>
 </section>
 
 <section id="contact">
-  <div class="footer-glass reveal">
+  <div class="contact-card">
     <span class="s-label">~/contact</span>
-    <h2 class="s-title" style="margin-bottom:.5rem">Let's build something.</h2>
-    <p>I take on a few projects per month. If you need a fast website, a configured server, or a Raspberry Pi project — write to me.</p>
-    <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1rem">
-      <a href="https://github.com/catcore-dev" target="_blank">github.com/catcore-dev</a>
-      <a href="https://t.me/hogin12" target="_blank">t.me/hogin12</a>
-    </div>
+    <h2>Let's work together.</h2>
+    <p>A few projects per month. Websites, servers, Raspberry Pi. Fast, clean, on time.</p>
+    <a href="https://t.me/hogin12" target="_blank">t.me/hogin12</a>
+    <a href="https://github.com/catcore-dev" target="_blank">github.com/catcore-dev</a>
   </div>
 </section>
 
 </main>
 
-<footer>$ echo "built on debian, hosted on github pages"</footer>
+<footer>built on debian &bull; hosted on github pages &bull; $ date +%Y</footer>
 
 <script>
 (function(){
-  var c=document.getElementById('bg'),ctx=c.getContext('2d');
-  var w,h,particles=[],num=60;
-  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
-  resize();window.addEventListener('resize',resize);
-  for(var i=0;i<num;i++)particles.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.5+.5,o:Math.random()*.5+.2});
+  var c=document.getElementById('bg'),ctx=c.getContext('2d'),w,h,pts=[],N=50,mx=0,my=0;
+  function rs(){w=c.width=innerWidth;h=c.height=innerHeight}
+  rs();addEventListener('resize',rs);addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});
+  for(var i=0;i<N;i++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
   function draw(){
     ctx.clearRect(0,0,w,h);
-    for(var i=0;i<num;i++){var p=particles[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(99,102,241,'+p.o+')';ctx.fill()}
-    for(var i=0;i<num;i++){for(var j=i+1;j<num;j++){var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<100){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='rgba(99,102,241,'+(.1*(1-dist/100))+')';ctx.lineWidth=.4;ctx.stroke()}}}
+    for(var i=0;i<N;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;var dx=p.x-mx,dy=p.y-my,dist=Math.sqrt(dx*dx+dy*dy);if(dist<180){p.x+=dx*.002;p.y+=dy*.002;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mx,my);ctx.strokeStyle='rgba(99,102,241,'+(.12*(1-dist/180))+')';ctx.lineWidth=.5;ctx.stroke()}}
+    for(var i=0;i<N;i++){for(var j=i+1;j<N;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle='rgba(99,102,241,'+(.07*(1-d/90))+')';ctx.lineWidth=.3;ctx.stroke()}}}
+    for(var k=0;k<N;k++){ctx.beginPath();ctx.arc(pts[k].x,pts[k].y,1.2,0,Math.PI*2);ctx.fillStyle='rgba(99,102,241,.35)';ctx.fill()}
     requestAnimationFrame(draw)
   }
   draw();
 
-  var nav=document.getElementById('nav');window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60)});
-  if(window.IntersectionObserver){var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.15});document.querySelectorAll('.reveal').forEach(function(x){o.observe(x)})}
+  var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>60)});
 
-  var inp=document.getElementById('cmdInput');
-  if(inp){inp.addEventListener('keydown',function(e){
-    if(e.key==='Enter'){var v=this.value.trim().toLowerCase();
-      var routes={projects:'projects',work:'projects',services:'services',stack:'stack',contact:'contact',about:'stack',help:'',clear:'',cls:'',home:'',whoami:''};
-      if(routes[v]!==undefined){this.value='';if(routes[v])document.getElementById(routes[v]).scrollIntoView({behavior:'smooth'})}
-      else if(v==='email'||v==='mail'||v==='tg'||v==='telegram'){this.value='t.me/hogin12';setTimeout(function(){inp.value=''},2000)}
-      else if(v==='github'||v==='gh'){window.open('https://github.com/catcore-dev','_blank')}
-      else if(v){this.value='command not found: '+v;setTimeout(function(){inp.value=''},1500)}
-    }
-  })}
+  var projects=[
+    {cat:'web',lang:'HTML/CSS/JS',title:'Cartel Architecture Bureau',desc:'Dark premium brand site. Modal project cards, animated counters, responsive.',link:'https://no-time-to-sleep.github.io/cartel/'},
+    {cat:'web',lang:'HTML/CSS/JS',title:'Polaris Satellite Comms',desc:'Multi-page app with tab switching, coverage map, pricing calculator.',link:'https://no-time-to-sleep.github.io/polaris/'},
+    {cat:'web',lang:'HTML/CSS/JS',title:'Nina Kovacs Portfolio',desc:'Photographer brand site. Lightbox gallery, editorial typography.',link:'https://no-time-to-sleep.github.io/ninakovacs/'},
+    {cat:'web',lang:'HTML/CSS/JS',title:'Paper Cat Cartoon',desc:'Static site for a cartoon series. Multi-section, contact form.',link:'https://no-time-to-sleep.github.io/paper-mult-site/'},
+    {cat:'web',lang:'HTML/CSS/JS',title:'Synapse Portfolio',desc:'This site. Particles, terminal search, command palette.',link:'https://no-time-to-sleep.github.io/synapse/'},
+    {cat:'devops',lang:'Docker/Shell',title:'Deploy Stack',desc:'Production Docker Compose: Nextcloud, MariaDB, Redis, backups, UFW, Fail2ban.',link:'https://github.com/catcore-dev/deploy-stack'},
+    {cat:'devops',lang:'Bash/Markdown',title:'Debian External SSD Guide',desc:'1339-line checklist. Debian 13 on external drive for MacBook Air.',link:'https://github.com/catcore-dev/debian-external-ssd-guide'},
+    {cat:'devops',lang:'Python/Bash',title:'RPi Server Template',desc:'Production template: FastAPI, systemd, Nginx, SSL, deploy scripts.',link:'https://github.com/catcore-dev/rpi-server-template'},
+    {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer Alarm Clock',desc:'M5Stack alarm clock. RTC, buzzer, LCD menu, multiple alarms.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer GIF Player',desc:'Plays animated GIFs from SD card on the Cardputer display.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer Snake',desc:'Snake game for M5Stack Cardputer with keyboard controls.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer Pong',desc:'Pong game with display and keyboard input.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer Notes',desc:'Note-taking app with keyboard input and serial sync.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer Matrix',desc:'Matrix rain effect on M5Stack Cardputer display.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/PlatformIO',title:'Cardputer Pager',desc:'Two-device paging system using ESP-NOW protocol.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/Arduino',title:'Smart Home Sensor',desc:'DHT22, PIR sensor, relay. LCD 16x2 with button menu.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'hardware',lang:'C++/Arduino',title:'TFT SD Reader',desc:'Reads text from SD card and displays it on TFT screen.',link:'https://github.com/catcore-dev/arduino-sketches'},
+    {cat:'tools',lang:'Python',title:'PC Power Check',desc:'Cross-platform benchmark. CPU, memory, disk. Zero dependencies.',link:'https://github.com/catcore-dev/pc-bench'},
+    {cat:'games',lang:'GDScript',title:'Bus 322 Runner',desc:'Godot 4 arcade runner. 14,223 lines of gameplay script.',link:'https://github.com/catcore-dev'},
+    {cat:'games',lang:'GDScript',title:'Bus Babka Novel',desc:'Visual novel set in a bus. 3,668 lines of dialogue and logic.',link:'https://github.com/catcore-dev'},
+    {cat:'games',lang:'GDScript',title:'Sonic Escape',desc:'3-stage Sonic platformer. 52,261 lines of parkour scripting.',link:'https://github.com/catcore-dev'},
+    {cat:'games',lang:'GDScript',title:'Scooter Race',desc:'Racing game with 14,062 lines. Procedural track generation.',link:'https://github.com/catcore-dev'},
+    {cat:'games',lang:'GDScript',title:'Cat Bydlo Battle',desc:'RPG battle system with 6,692 lines of combat logic.',link:'https://github.com/catcore-dev'},
+    {cat:'games',lang:'GDScript',title:'Doom Babka Boss',desc:'Boss fight in Doom style. 8,813 lines of enemy AI and arena logic.',link:'https://github.com/catcore-dev'},
+    {cat:'games',lang:'GDScript',title:'Queue CS2 Shooter',desc:'CS2-style queue shooter. 18,348 lines of shooting mechanics.',link:'https://github.com/catcore-dev'},
+  ];
+
+  var grid=document.getElementById('projectGrid');
+  function renderProjects(filter){
+    grid.innerHTML='';
+    var filtered=filter==='all'?projects:projects.filter(function(p){return p.cat===filter});
+    filtered.forEach(function(p){
+      var d=document.createElement('a');d.href=p.link;d.target='_blank';d.className='pcard';
+      d.innerHTML='<span class="plang">'+p.lang+'</span><div class="ptag">'+p.cat+'</div><h3>'+p.title+'</h3><p>'+p.desc+'</p>';
+      grid.appendChild(d);
+    });
+  }
+  renderProjects('all');
+  window.filterProjects=function(cat,btn){
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+    btn.classList.add('active');renderProjects(cat);
+  };
+  window.scrollToSection=function(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})};
+  var inp=document.getElementById('cmd'),sug=document.getElementById('suggest');
+  var cmds=['help','projects','about','contact','websites','devops','hardware','tools','games','terminal','whoami','github','tg','clear'];
+  var cmdData={help:'projects | about | contact | websites | devops | hardware | tools | games | terminal | whoami | github | tg | clear',
+    whoami:'Daniil Alekseev — web developer, systems engineer, hardware hacker. Based in Russia, working remotely.',
+    about:'I build static websites, configure Linux servers, and program embedded hardware. Docker, Nginx, Debian, Arduino, M5Stack.',
+    github:'github.com/catcore-dev — all my code lives here.',
+    tg:'t.me/hogin12 — message me on Telegram.'};
+  if(inp){inp.addEventListener('input',function(){
+    var v=this.value.trim().toLowerCase(),f=cmds.filter(function(x){return x.startsWith(v)&&v.length>0});
+    if(f.length>0){sug.innerHTML=f.map(function(x,i){return'<span class="'+(i===0?'sel':'')+'" onclick="selectCmd(\''+x+'\')">'+x+'</span>'}).join('');sug.classList.add('show')}else{sug.classList.remove('show')}
+  });
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){var v=this.value.trim().toLowerCase();runCmd(v)}
+    if(e.key==='Tab'){e.preventDefault();var sel=sug.querySelector('.sel');if(sel){this.value=sel.textContent;sug.classList.remove('show')}}
+  });}
+  window.selectCmd=function(x){inp.value=x;sug.classList.remove('show');inp.focus();runCmd(x)};
+  function runCmd(v){
+    if(v==='clear'||v==='cls'){inp.value='';sug.classList.remove('show');return}
+    if(v==='projects'||v==='work'){scrollToSection('projects');filterProjects('all',document.querySelector('.tab'))}
+    else if(v==='websites'){scrollToSection('projects');filterProjects('web',document.querySelectorAll('.tab')[1])}
+    else if(v==='devops'){scrollToSection('projects');filterProjects('devops',document.querySelectorAll('.tab')[2])}
+    else if(v==='hardware'){scrollToSection('projects');filterProjects('hardware',document.querySelectorAll('.tab')[3])}
+    else if(v==='tools'){scrollToSection('projects');filterProjects('tools',document.querySelectorAll('.tab')[4])}
+    else if(v==='games'){scrollToSection('projects');filterProjects('games',document.querySelectorAll('.tab')[5])}
+    else if(v==='about'||v==='contact'){scrollToSection('contact')}
+    else if(v==='terminal'){scrollToSection('term')}
+    else if(v==='github'||v==='gh'){window.open('https://github.com/catcore-dev','_blank')}
+    else if(v==='tg'||v==='telegram'){window.open('https://t.me/hogin12','_blank')}
+    else if(cmdData[v]){inp.value=cmdData[v];setTimeout(function(){inp.value=''},3000)}
+    else if(v){inp.value=v+' — not found. type help';setTimeout(function(){inp.value=''},1500)}
+    sug.classList.remove('show');
+  }
 })();
 </script>
 </body>
